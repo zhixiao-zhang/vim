@@ -318,7 +318,7 @@ CClink = $(CC)
 # Uncomment this line when you don't want to get the GUI version, although you
 # have GTK and/or Motif.  Also use --without-x if you don't want X11
 # at all.
-#CONF_OPT_GUI = --disable-gui
+CONF_OPT_GUI = --disable-gui
 
 # Uncomment one of these lines if you have that GUI but don't want to use it.
 # The automatic check will use another one that can be found.
@@ -364,7 +364,7 @@ CClink = $(CC)
 # DARWIN - detecting Mac OS X
 # Uncomment this line when you want to compile a Unix version of Vim on
 # Darwin.  None of the Mac specific options or files will be used.
-#CONF_OPT_DARWIN = --disable-darwin
+# CONF_OPT_DARWIN = --disable-darwin
 
 # Select the architecture supported.  Default is to build for the current
 # platform.  Use "both" for a universal binary.  That probably doesn't work
@@ -387,12 +387,12 @@ CClink = $(CC)
 # Use --with-luajit if you want to use LuaJIT instead of Lua.
 # Set PATH environment variable to find lua or luajit executable.
 # This requires at least "normal" features, "tiny" doesn't work.
-#CONF_OPT_LUA = --enable-luainterp
+CONF_OPT_LUA = --enable-luainterp
 #CONF_OPT_LUA = --enable-luainterp=dynamic
 #CONF_OPT_LUA = --enable-luainterp --with-luajit
 #CONF_OPT_LUA = --enable-luainterp=dynamic --with-luajit
 # Lua installation dir (when not set uses $LUA_PREFIX or defaults to /usr)
-#CONF_OPT_LUA_PREFIX = --with-lua-prefix=/usr/local
+CONF_OPT_LUA_PREFIX = --with-lua-prefix=/opt/homebrew/opt/lua
 
 # MZSCHEME
 # Uncomment this when you want to include the MzScheme interface.
@@ -438,7 +438,7 @@ CClink = $(CC)
 #CONF_OPT_PYTHON = --enable-pythoninterp
 #CONF_OPT_PYTHON = --enable-pythoninterp --with-python-command=python2.7
 #CONF_OPT_PYTHON = --enable-pythoninterp=dynamic
-#CONF_OPT_PYTHON3 = --enable-python3interp
+CONF_OPT_PYTHON3 = --enable-python3interp
 #CONF_OPT_PYTHON3 = --enable-python3interp --with-python3-command=python3.6
 #CONF_OPT_PYTHON3 = --enable-python3interp=dynamic
 
@@ -462,12 +462,12 @@ CClink = $(CC)
 
 # CSCOPE
 # Uncomment this when you want to include the Cscope interface.
-#CONF_OPT_CSCOPE = --enable-cscope
+CONF_OPT_CSCOPE = --enable-cscope
 
 # NETBEANS - NetBeans interface. Only works with Motif, GTK, and gnome.
 # Motif version must have XPM libraries (see |netbeans-xpm|).
 # Uncomment this when you do not want the netbeans interface.
-#CONF_OPT_NETBEANS = --disable-netbeans
+CONF_OPT_NETBEANS = --disable-netbeans
 
 # CHANNEL - inter process communication. Same conditions as NetBeans.
 # Uncomment this when you do not want inter process communication.
@@ -478,7 +478,7 @@ CClink = $(CC)
 # Uncomment the first line when you want terminal emulator support for
 # not-huge builds.  Uncomment the second line when you don't want terminal
 # emulator support in the huge build.
-#CONF_OPT_TERMINAL = --enable-terminal
+CONF_OPT_TERMINAL = --enable-terminal
 #CONF_OPT_TERMINAL = --disable-terminal
 
 # MULTIBYTE - To edit multi-byte characters.
@@ -534,17 +534,17 @@ CClink = $(CC)
 # The default is "huge" for most systems.
 #CONF_OPT_FEAT = --with-features=tiny
 #CONF_OPT_FEAT = --with-features=normal
-#CONF_OPT_FEAT = --with-features=huge
+CONF_OPT_FEAT = --with-features=huge
 
 # COMPILED BY - For including a specific e-mail address for ":version".
-#CONF_OPT_COMPBY = "--with-compiledby=John Doe <JohnDoe@yahoo.com>"
+CONF_OPT_COMPBY = "--with-compiledby=Zhixiao Zhang <zhixiao-zhang@outlook.com>"
 
 # X WINDOWS DISABLE - For creating a plain Vim without any X11 related fancies
 # (otherwise Vim configure will try to include xterm titlebar access)
 # Also disable the GUI above, otherwise it will be included anyway.
 # When both GUI and X11 have been disabled this may save about 15% of the
 # code and make Vim startup quicker.
-#CONF_OPT_X = --without-x
+CONF_OPT_X = --without-x
 
 # X WINDOWS DIRECTORY - specify X directories
 # If configure can't find you X stuff, or if you have multiple X11 derivatives
@@ -580,14 +580,14 @@ CClink = $(CC)
 # again.
 #CC = cc
 #CC = gcc
-#CC = clang
+CC = /opt/homebrew/opt/llvm/bin/clang
 
 # COMPILER FLAGS - change as you please. Either before running {{{1
 # configure or afterwards. For examples see below.
 # When using -g with some older versions of Linux you might get a
 # statically linked executable.
 # When not defined, configure will try to use -O2 for gcc and -O for others.
-#CFLAGS = -g
+CFLAGS = -I/opt/homebrew/Cellar/libsodium/1.0.20/include
 #CFLAGS = -O
 
 # Optimization limits - depends on the compiler.  Automatic check in configure
@@ -681,7 +681,7 @@ LINT_OPTIONS = -beprxzF
 # 7. Open the objects/index.html file in a web browser to view the coverage
 #    information.
 #
-# LDFLAGS=--coverage
+LDFLAGS=-L/opt/homebrew/opt/fdk-aac/lib
 # PROFILE_CFLAGS=-g -O0 -fprofile-arcs -ftest-coverage -DWE_ARE_PROFILING -DUSE_GCOV_FLUSH
 # Alternate flags
 # PROFILE_CFLAGS=-g -O0 --coverage -DWE_ARE_PROFILING -DUSE_GCOV_FLUSH
@@ -896,7 +896,7 @@ SANITIZER_LIBS = $(SANITIZER_CFLAGS)
 
 ### If you want to use ncurses library instead of the automatically found one
 ### after changing this, you need to do "make reconfig".
-#CONF_TERM_LIB = --with-tlib=ncurses
+CONF_TERM_LIB = --with-tlib=ncurses
 
 ### For GCC on MS-Windows, the ".exe" suffix will be added.
 #EXEEXT = .exe
